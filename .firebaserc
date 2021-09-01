@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "saladejuegos2-df4d8": {
+      "hosting": {
+        "SalaDeJuegos": [
+          "saladejuegos2-df4d8"
+        ]
+      }
+    }
+  }
+}
