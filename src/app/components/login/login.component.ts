@@ -13,10 +13,11 @@ export class LoginComponent implements OnInit {
   constructor(private auth:AuthService, private router:Router) { this.user = new Usuario() }
 
   ngOnInit(): void {
+    console.log(this.auth.isLogged(),this.auth.user);
   }
 
 
-  
+
   onLogin(){
 
    this.auth.Login(this.user.correo  ,this.user.password).then(()=>{
