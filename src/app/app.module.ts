@@ -10,7 +10,10 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
-
+import { ChatComponent } from './components/chat/chat.component';
+import { MayormenorComponent } from './components/mayormenor/mayormenor.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +21,17 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     QuiensoyComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ChatComponent,
+    MayormenorComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
