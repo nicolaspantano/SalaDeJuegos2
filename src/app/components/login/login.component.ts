@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { Usuario } from '../../clases/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { LogsService } from 'src/app/services/logs.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,12 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   user : Usuario;
+  @Output() seLogeo: EventEmitter<any> = new EventEmitter<any>();
   constructor(private auth:AuthService, private router:Router,private log:LogsService) { this.user = new Usuario() }
 
   ngOnInit(): void {
     
   }
-
 
 
   onLogin(){

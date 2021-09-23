@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { MayormenorComponent } from './components/mayormenor/mayormenor.component';
@@ -10,12 +11,13 @@ import { QuiensoyComponent } from './pages/quiensoy/quiensoy.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
-  {path:'home',component:HomeComponent},
+  {path:'home',component:HomeComponent, canActivate: [UserGuard]},
   {path:'login',component:LoginComponent},
   {path:'registrarse',component:RegistroComponent},
   {path:'quiensoy',component:QuiensoyComponent},
   {path:'chat',component:ChatComponent, canActivate: [UserGuard]},
-  {path:'mayormenor',component:MayormenorComponent}
+  {path:'mayormenor',component:MayormenorComponent},
+  {path:'ahorcado',component:AhorcadoComponent}
 ];
 
 @NgModule({

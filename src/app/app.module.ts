@@ -14,6 +14,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { MayormenorComponent } from './components/mayormenor/mayormenor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './components/loading/loading.component';
+import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     RegistroComponent,
     ChatComponent,
     MayormenorComponent,
-    LoadingComponent
+    LoadingComponent,
+    AhorcadoComponent
   ],
   imports: [
     BrowserModule,

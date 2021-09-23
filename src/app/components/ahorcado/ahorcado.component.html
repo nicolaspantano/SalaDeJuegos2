@@ -1,0 +1,21 @@
+<div *ngIf="letrasPalabra.length==0" class="text-center my-auto">
+    <app-loading ></app-loading>
+
+</div>
+<div *ngIf="letrasPalabra.length!=0" class="container text-center">
+    <div class="row">
+        <div class="col-6">
+            <span *ngFor="let actual of palabraUsuario" class="palabraUsuario">{{actual}}</span>
+
+        </div>
+        <div class="col-6">
+            <p>Adivine la palabra en menos de 4 intentos!</p>
+            <p>Intentos: {{intentos}}</p>
+        </div>
+    </div>
+    <div style="margin-top:30px">
+
+        <button class="letra" *ngFor="let letra of letras" (click)="elegirLetra(letra)">{{letra}}</button>
+    </div>
+
+</div>

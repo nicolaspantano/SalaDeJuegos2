@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,9 +11,11 @@ import Swal from 'sweetalert2';
 })
 export class MenuComponent implements OnInit {
 
-
+  usuario;
   constructor(private auth:AuthService, private router:Router) { 
-
+    router.events.subscribe(() => {
+      this.usuario = auth.user;
+    })
   }
 
   ngOnInit(): void {
