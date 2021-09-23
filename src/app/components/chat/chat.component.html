@@ -1,4 +1,4 @@
-<div class="container" style="width:80%; background-color: red; display:block">
+<div class="container" style="width:80%;">
         <div *ngFor="let mensaje of mensajes" class="row" style="width: inherit;overflow: hidden;">
                 <div style="border: black; border:solid; border-width: 5px; overflow: hidden;" [ngClass]="{'propio' : mensaje.usuario==authSvc.user.correo, 'otro': mensaje.usuario!=authSvc.user.correo}"
                     style="margin:15px">
