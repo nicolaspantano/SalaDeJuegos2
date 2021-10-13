@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
+
 import { ChatComponent } from './components/chat/chat.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { LoginComponent } from './components/login/login.component';
-import { MayormenorComponent } from './components/mayormenor/mayormenor.component';
+
 import { RegistroComponent } from './components/registro/registro.component';
 import { UserGuard } from './guards/user.guard';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,9 +17,9 @@ const routes: Routes = [
   {path:'registrarse',component:RegistroComponent},
   {path:'quiensoy',component:QuiensoyComponent},
   {path:'chat',component:ChatComponent, canActivate: [UserGuard]},
-  {path:'mayormenor',component:MayormenorComponent},
-  {path:'ahorcado',component:AhorcadoComponent}
-];
+  {path:'juegos',loadChildren: ()=>(import('./modules/juegos/juegos-routing.module').then(m => m.JuegosRoutingModule)),canActivate: [UserGuard]},
+  {path:'encuesta',component:EncuestaComponent, canActivate: [UserGuard]}
+];  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

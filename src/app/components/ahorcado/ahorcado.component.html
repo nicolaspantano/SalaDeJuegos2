@@ -17,5 +17,9 @@
 
         <button class="letra" *ngFor="let letra of letras" (click)="elegirLetra(letra)">{{letra}}</button>
     </div>
-
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-12" style="width: 80%;">
+        <app-puntuaciones juego="ahorcado"></app-puntuaciones>
+        </div>
+    </div>
 </div>

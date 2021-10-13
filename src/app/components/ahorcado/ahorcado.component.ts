@@ -1,6 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Letra } from 'src/app/clases/letra';
+import { ScoresService } from 'src/app/services/scores.service';
 import Swal from 'sweetalert2';
 
 
@@ -16,7 +18,7 @@ export class AhorcadoComponent implements OnInit {
   palabraUsuario = [];
   palabra;
   intentos = 0;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private scoreSvc:ScoresService, private router:Router) {
 
   }
 
@@ -81,9 +83,18 @@ export class AhorcadoComponent implements OnInit {
       Swal.fire({
         title: 'Felicidades! Usted gano.',
         icon: 'success',
-        confirmButtonText: 'Reiniciar Juego'
-      }).then(()=>{
-        this.reiniciarJuego();
+        confirmButtonText: 'Reiniciar Juego',
+        showDenyButton: true,
+        denyButtonText: `Responder encuesta`,
+      }).then((result)=>{
+         this.scoreSvc.guardarScore('ahorcado',localStorage.getItem('token'),this.intentos);
+
+        if(result.isConfirmed){
+          this.reiniciarJuego();
+        }
+        else{
+          this.router.navigateByUrl('/encuesta');
+        }
       });
       
     }
@@ -91,15 +102,27 @@ export class AhorcadoComponent implements OnInit {
       Swal.fire({
         title: 'Lo siento! Ha perdido',
         icon: 'error',
-        confirmButtonText: 'Reiniciar Juego'
-      }).then(()=>{
-        this.reiniciarJuego();
+        confirmButtonText: 'Reiniciar Juego',
+        showDenyButton: true,
+        denyButtonText: `Responder encuesta`,
+        allowOutsideClick: false
+      }).then((result)=>{
+        this.scoreSvc.guardarScore('ahorcado',localStorage.getItem('token'),this.intentos);
+
+        if(result.isConfirmed){
+          this.reiniciarJuego();
+        }
+        else if(result.isDenied){
+          this.router.navigateByUrl('/encuesta');
+        }
+        
       });
 
     }
   }
 
   reiniciarJuego(){
+
     this.letras=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     this.intentos=0;
     this.letrasPalabra = [];

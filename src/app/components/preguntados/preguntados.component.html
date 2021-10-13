@@ -1,0 +1,36 @@
+<div *ngIf="this.paisActual" class="container">
+    <div class="text-center">
+        <h1>¿Que pais es?</h1>
+        <h5>Puntuacion: {{puntuacion}}</h5>
+        <img [src]="paisActual.flags.png">
+    </div>
+    <div class="row text-center" style="margin-top: 20px;">
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="elegir(0)">{{paises[0].translations.spa.official}}</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="elegir(1)">{{paises[1].translations.spa.official}}</button>
+
+        </div>
+    </div>
+    <div class="row text-center" style="margin-top: 20px;">
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="elegir(2)">{{paises[2].translations.spa.official}}</button>
+
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="elegir(3)">{{paises[3].translations.spa.official}}</button>
+            
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!this.paisActual" class="text-center">
+    <app-loading></app-loading>
+</div>
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-12" style="width: 80%;">
+    <app-puntuaciones juego="preguntados"></app-puntuaciones>
+    </div>
+</div>

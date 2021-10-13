@@ -9,12 +9,16 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './components/chat/chat.component';
 import { MayormenorComponent } from './components/mayormenor/mayormenor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './components/loading/loading.component';
 import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
+import { MatematicaComponent } from './components/matematica/matematica.component';
+import { PuntuacionesComponent } from './components/puntuaciones/puntuaciones.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +30,19 @@ import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
     ChatComponent,
     MayormenorComponent,
     LoadingComponent,
-    AhorcadoComponent
+    AhorcadoComponent,
+    PreguntadosComponent,
+    MatematicaComponent,
+    PuntuacionesComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

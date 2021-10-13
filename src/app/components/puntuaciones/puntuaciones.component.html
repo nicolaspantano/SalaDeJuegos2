@@ -1,0 +1,20 @@
+<table *ngIf="puntuaciones" class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Puntuacion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let puntuacion of puntuaciones;let i = index">
+        <td>{{i+1}}</td>
+          <td>{{puntuacion.fecha}}</td>
+          <td>{{puntuacion.usuario}}</td>
+          <td>{{puntuacion.puntuacion}}</td>
+
+      </tr>
+        
+    </tbody>
+  </table>

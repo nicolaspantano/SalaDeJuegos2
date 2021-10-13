@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ScoresService } from 'src/app/services/scores.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mayormenor',
@@ -14,7 +17,7 @@ export class MayormenorComponent implements OnInit {
   cartaAnterior;
   puntaje=0;
   mensaje;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private scoreSvc:ScoresService, private router:Router) { }
 
 
   ngOnInit(): void {
@@ -83,8 +86,25 @@ export class MayormenorComponent implements OnInit {
   }
 
   terminarJuego(){
-    this.mensaje="Ha perdido! Su puntuacion fue de : " + this.puntaje;
-    this.peticionAjax();
-    this.puntaje=0;
+    Swal.fire({
+      title: "Ha perdido! Su puntuacion fue de : " + this.puntaje,
+      icon: 'error',
+      confirmButtonText: 'Reiniciar Juego',
+      showDenyButton: true,
+      denyButtonText: `Responder encuesta`,
+      allowOutsideClick: false
+    }).then((result)=>{
+      this.scoreSvc.guardarScore('mayormenor',localStorage.getItem('token'),this.puntaje);
+
+      if(result.isConfirmed){
+        this.peticionAjax();
+        this.puntaje=0;
+      }
+      else if(result.isDenied){
+        this.router.navigateByUrl('/encuesta');
+      }
+      
+    });
+    
   }
 }

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 text-center my-auto">
+            <select class="form-control" (change)="onChange($event.target)" name="select">
+                <option value="facil" selected>Facil</option>
+                <option value="intermedio" >Intermedio</option>
+                <option value="dificil" >Dificil</option>
+              </select>
+            <h3>Puntuacion: {{score}}</h3>
+            <h1>{{ecuacion}}</h1>
+        </div>
+        <div class="col-6 text-center">
+            <span *ngFor="let opcion of opciones; let indice=index"><button  class="btn btn-primary btn-block" style="margin-top: 10px;margin-bottom: 10px;" (click)="eleccion(indice)">{{opcion}}</button><br></span>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-12" style="width: 80%;">
+        <app-puntuaciones juego="matematica"></app-puntuaciones>
+        </div>
+    </div>
+</div>
+

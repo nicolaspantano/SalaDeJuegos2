@@ -29,12 +29,12 @@ export class MenuComponent implements OnInit {
     }).then(()=>{
       this.auth.Logout();
       this.auth.user=null;
-      this.router.navigateByUrl('');    
+      this.router.navigateByUrl('/login');    
     })
   }
 
   verificarLogin(){
-    if(this.auth.user){
+    if(localStorage.getItem('token')!=null){
       return true;
     }
     return false;
