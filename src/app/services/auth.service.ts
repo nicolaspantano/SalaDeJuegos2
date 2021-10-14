@@ -20,6 +20,7 @@ export class AuthService {
         this.user=new Usuario();
         this.user.correo=email;
         this.user.password=password;
+        this.BuscarRol(response.user.uid);
         resolve(response);
         
         
@@ -88,5 +89,11 @@ export class AuthService {
     localStorage.clear();
     this.user=null;
     
+  }
+
+  BuscarRol(uid){
+    this.bd.collection('usuarios').doc(uid).valueChanges().subscribe((res)=>{
+      this.user.rol=res['rol'];
+    })
   }
 }

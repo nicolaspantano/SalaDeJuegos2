@@ -19,9 +19,10 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
+  
   logout(){
     Swal.fire({
       title: 'Hasta luego!',
@@ -39,4 +40,6 @@ export class MenuComponent implements OnInit {
     }
     return false;
   }
+
+
 }

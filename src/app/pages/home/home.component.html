@@ -16,5 +16,8 @@
             <img routerLink="/juegos/matematica" src="../../../assets/matematica.jpg">
         </div>
     </div>
+    <div class="row text-center" style="margin-top: 30px;">
+        <button *ngIf="verificarRol()" class="btn btn-primary mx-auto" routerLink="/encuesta-respuestas">Ver resultado de las encuestas</button>
+    </div>
     
 </div>

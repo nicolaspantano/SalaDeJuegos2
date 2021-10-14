@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { LogsService } from 'src/app/services/logs.service';
 import Swal from 'sweetalert2';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   user : Usuario;
   @Output() seLogeo: EventEmitter<any> = new EventEmitter<any>();
-  constructor(private auth:AuthService, private router:Router,private log:LogsService) { this.user = new Usuario() }
+  constructor(private auth:AuthService, private router:Router,private log:LogsService, private firestore:AngularFirestore) { this.user = new Usuario() }
 
   ngOnInit(): void {
     
@@ -49,4 +50,10 @@ export class LoginComponent implements OnInit {
     this.user.correo = 'prueba1234@hotmail.com';
     this.user.password='12341234'
   }
+  HardcodearUsuarioAdmin(){
+    this.user.correo = 'admin@gmail.com';
+    this.user.password='12341234'
+  }
+
+  
 }

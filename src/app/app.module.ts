@@ -19,6 +19,7 @@ import { PreguntadosComponent } from './components/preguntados/preguntados.compo
 import { MatematicaComponent } from './components/matematica/matematica.component';
 import { PuntuacionesComponent } from './components/puntuaciones/puntuaciones.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { EncuestaRespuestasComponent } from './components/encuesta-respuestas/encuesta-respuestas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
     PreguntadosComponent,
     MatematicaComponent,
     PuntuacionesComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    EncuestaRespuestasComponent
   ],
   imports: [
     BrowserModule,

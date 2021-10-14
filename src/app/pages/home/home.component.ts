@@ -14,4 +14,11 @@ export class HomeComponent implements OnInit {
 
   }
 
+  verificarRol(){
+    if(this.auth.user.rol=='admin'){
+      return true;
+    }
+    return false;
+  }
+
 }
